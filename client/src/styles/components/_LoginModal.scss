@@ -1,0 +1,64 @@
+.login-modal-object {
+    width: 50rem;
+    margin: 0 auto;
+    align-self: center;
+    vertical-align: middle;
+    background: $sectionColor;
+    border-radius: 1rem;
+    margin-top: 15%;
+    color: white;
+    padding-top: 1rem;
+}
+
+.login-modal {
+    h1 {
+        text-align: left;
+        font-size: 3rem;
+        display: inline;
+        margin-left: 2rem;
+    }
+
+    img {
+        height: 3rem;
+        display: inline;
+        margin-bottom: 1rem;
+        margin-left: 2rem;
+    }
+
+    input {
+        width: 100%;
+        padding: 1rem;
+    }
+    h2 {
+        text-align: center;
+    }
+
+    .form-item {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        margin-bottom: 2rem;
+        margin-top: 0.5rems;
+    }
+    .panel {
+        color: black;
+        background: $backgroundColor;
+        padding: 1rem;
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+    }
+
+    p {
+        color: darkred;
+        font-size: 1.5rem;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+    button {
+        border-radius: 0;
+    }
+
+    span {
+        margin: 0rem 0.5rem;
+    }
+}

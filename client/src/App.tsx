@@ -12,6 +12,8 @@
 import React, { FC, useState, useEffect } from 'react'
 import { Header } from '@components/Header'
 import { User } from '@interfaces/User'
+import { LoginModal } from '@components/LoginModal'
+import { ErrorFunction } from '@interfaces/Error'
 
 // * Application State Interface
 interface AppState {
@@ -45,15 +47,22 @@ export const App: FC = () => {
     }, [user]) // ! As provided in the second argument
 
     // * Logout Function
-    const logOut = () => {
+    const logout = () => {
         // TODO: Log user out and set user to null
     }
 
     // * Login Function
-    const logIn = () => {
+    const login = (username: string, password: string, onError: ErrorFunction) => {
         // TODO: Log user in and set user to user object
+        console.log(`Attempting to login ${username} : ${password}`)
+        onError('Not Implemented Yet!')
     }
 
+    // * Register Function
+    const register = (username: string, password: string, onError: ErrorFunction) => {
+        console.log(`Attempting to register ${username} : ${password}`)
+        onError('Not Implemented Yet!')
+    }
     return (
         <div className="app">
             <Header />
@@ -78,7 +87,7 @@ export const App: FC = () => {
                                 {
                                     // * User Not Logged In
                                 }
-                                Not Logged In
+                                <LoginModal onLogin={login} onRegister={register} />
                             </div>
                         ) : (
                             <div>
