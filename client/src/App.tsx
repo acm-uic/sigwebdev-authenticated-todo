@@ -13,7 +13,9 @@ import React, { FC, useState, useEffect } from 'react'
 import { Header } from '@components/Header'
 import { User } from '@interfaces/User'
 import { LoginModal } from '@components/LoginModal'
-import { ErrorFunction } from '@interfaces/Error'
+import { TodoList } from '@components/TodoList'
+import { ErrorFunction, ErrorMessage } from '@interfaces/Error'
+import axios from 'axios'
 
 // * Application State Interface
 interface AppState {
@@ -41,27 +43,63 @@ export const App: FC = () => {
     // * useEffect is called everytime user value changes
     useEffect(() => {
         if (!loaded) {
-            // TODO: Fetch User & Todos from API
-            setState({ ...state, loaded: true })
+            // * Fetch user from API
+            axios
+                .get('/api/user')
+                .then(response => {
+                    // * If user exist, set state with user and return
+                    if (response.status < 400) {
+                        const user = response.data
+                        console.log(user)
+                        setState({ ...state, loaded: true, user })
+                        return
+                    }
+                })
+                .catch(() => {
+                    // * Otherwise set loaded state to true, (login modal will appear)
+                    setState({ ...state, loaded: true })
+                })
         }
     }, [user]) // ! As provided in the second argument
 
     // * Logout Function
-    const logout = () => {
-        // TODO: Log user out and set user to null
+    const logout = async () => {
+        await axios.post('/api/logout')
+        setState({ ...state, user: null })
     }
 
     // * Login Function
-    const login = (username: string, password: string, onError: ErrorFunction) => {
-        // TODO: Log user in and set user to user object
-        console.log(`Attempting to login ${username} : ${password}`)
-        onError('Not Implemented Yet!')
+    const login = async (username: string, password: string, onError: ErrorFunction) => {
+        // TODO: Write login route (very similar to register route
+        try {
+            const response = await axios.post('/api/login', {
+                username,
+                password
+            })
+
+            const user: User = response.data
+            setState({ ...state, user })
+        } catch (err) {
+            const error: ErrorMessage = err.response.data
+            onError(error.message)
+        }
     }
 
     // * Register Function
-    const register = (username: string, password: string, onError: ErrorFunction) => {
+    const register = async (username: string, password: string, onError: ErrorFunction) => {
         console.log(`Attempting to register ${username} : ${password}`)
-        onError('Not Implemented Yet!')
+
+        try {
+            const response = await axios.post('/api/register', {
+                username,
+                password
+            })
+            const user: User = response.data
+            setState({ ...state, user })
+        } catch (err) {
+            const error: ErrorMessage = err.response.data
+            onError(error.message)
+        }
     }
     return (
         <div className="app">
@@ -73,7 +111,7 @@ export const App: FC = () => {
                         {
                             // * App Not Loaded
                         }
-                        <h3> Not Loaded </h3>
+                        <h3 style={{ textAlign: 'center' }}> Loading </h3>
                     </div>
                 )}
 
@@ -94,7 +132,14 @@ export const App: FC = () => {
                                 {
                                     // * User Logged In
                                 }
-                                Logged In
+                                <TodoList
+                                    user={user}
+                                    setUser={(user: User) => setState({ ...state, user })}
+                                />
+
+                                <button onClick={logout} className="btn btn-outline-light logout">
+                                    Logout
+                                </button>
                             </div>
                         )}
                     </div>

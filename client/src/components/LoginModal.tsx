@@ -63,7 +63,7 @@ export const LoginModal: FC<LoginModalProps> = props => {
 
     return (
         <div>
-            <Modal className="login-modal-object" isOpen={true}>
+            <Modal className="login-modal-object" isOpen={true} ariaHideApp={false}>
                 <div className="login-modal">
                     <img src={ACMLogo} />
                     <h1>ToDo List</h1>

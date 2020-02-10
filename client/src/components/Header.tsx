@@ -6,7 +6,9 @@ export const Header: FC = () => {
     return (
         <div className="header">
             <img src={ACMLogo} />
-            <h1> SIG WebDev Todo Application</h1>
+            <div style={{ display: 'inline' }}>
+                <h1> SIG WebDev Todo Application</h1>
+            </div>
         </div>
     )
 }

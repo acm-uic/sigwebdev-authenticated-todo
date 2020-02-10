@@ -1,0 +1,53 @@
+.addTodo {
+    .add-btn {
+        position: absolute;
+        bottom: 2rem;
+        right: 3rem;
+        border-radius: 5rem;
+        font-size: 2rem;
+    }
+}
+
+.addTodo-modal {
+    width: 50rem;
+    margin: 0 auto;
+    align-self: center;
+    vertical-align: middle;
+    background: $sectionColor;
+    border-radius: 1rem;
+    margin-top: 15%;
+    color: white;
+    padding-top: 1rem;
+}
+
+.addTodo-content {
+    color: white;
+
+    .header {
+        padding: 1rem;
+        width: 100%;
+        text-align: left;
+        h1 {
+            font-size: 2rem;
+            display: inline;
+            margin-left: 2rem;
+        }
+    }
+
+    .panel {
+        color: black;
+        background: $backgroundColor;
+        padding: 1rem;
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+    }
+    input {
+        margin: 1rem auto;
+    }
+    button {
+        margin: 1rem auto;
+    }
+    textarea {
+        height: 8rem;
+    }
+}
