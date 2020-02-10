@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Todo } from '@interfaces/Todo'
+import { Todo } from 'models/Todo'
 interface TodoProps {
     markTodo(id: string, value: boolean): void
     deleteTodo(id: string): void
@@ -8,18 +8,17 @@ interface TodoProps {
 
 // * Export Header Component
 export const TodoItem: FC<TodoProps> = props => {
+    // * Grab needed information from props
     const { todo, deleteTodo, markTodo } = props
 
     return (
         <div className="todo col-sm-5">
-            {
-                // TODO: Populate HTML with todo information
-            }
             <div className="card">
                 <div className="card-header">
                     <h2 className={`${todo.completed ? 'marked' : ''}`}>{todo.title}</h2>
                 </div>
-                {!todo.completed && (
+
+                {/* If Todo not completed, show body */ !todo.completed && (
                     <div className="card-body">
                         <p>{todo.description}</p>
                     </div>

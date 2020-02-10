@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { User } from '@interfaces/User'
+import { User } from 'models/User'
 import { AddTodo } from '@components/AddTodo'
 import { TodoItem } from '@components/TodoItem'
 import axios from 'axios'
@@ -14,8 +14,6 @@ export const TodoList: FC<TodoListProps> = props => {
     const { user, setUser } = props
 
     const addTodo = async (title: string, description: string) => {
-        console.log('POSTED')
-
         // * Post todo to API
         await axios.post('/api/addtodo', {
             title,
@@ -29,26 +27,25 @@ export const TodoList: FC<TodoListProps> = props => {
     }
 
     const deleteTodo = async (id: string) => {
-        // TODO: Make API Request to Delete Todo given string ID
+        // * Post to deletetodo route in API
         axios.post('/api/deletetodo', {
             id
         })
 
         // * Update User Object to refresh application
         const user = (await axios.get('/api/user')).data
-        console.log(user)
         setUser(user)
     }
 
     const markTodo = async (id: string, value: boolean) => {
-        // TODO: Make API Request to mark todo as completed/not completed
+        // * Post to marktodo route in API
         axios.post('/api/marktodo', {
             id,
             value
         })
+
         // * Update User Object to refresh application
         const user = (await axios.get('/api/user')).data
-        console.log(user.todos)
         setUser(user)
     }
 
@@ -57,7 +54,7 @@ export const TodoList: FC<TodoListProps> = props => {
             <AddTodo addTodo={addTodo} />
             <div className="row justify-content-md-center">
                 {user !== null &&
-                    // TODO: Map over user todos and render proper HTML
+                    // * Map over all of the users todos and list them out
                     user.todos.map((todo, index) => {
                         return (
                             <TodoItem

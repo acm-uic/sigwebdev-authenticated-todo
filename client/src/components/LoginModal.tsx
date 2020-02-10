@@ -1,18 +1,20 @@
 import React, { FC, useState, FormEvent } from 'react'
 import Modal from 'react-modal'
 import ACMLogo from '@assets/acmlogo.png'
-import { ErrorFunction } from '@interfaces/Error'
-// * login modal, allows user to login/register with application
+import { ErrorFunction } from 'models/Error'
 
+// * Login Modal, allows user to login/register with application
 interface tabState {
     name: string
 }
 
+//  * Login Modal Props
 interface LoginModalProps {
     onLogin(username: string, password: string, onError: ErrorFunction): any
     onRegister(username: string, password: string, onError: ErrorFunction): any
 }
 
+// * Login Modal component
 export const LoginModal: FC<LoginModalProps> = props => {
     // * Tab in modal
     const [currentTab, setTab] = useState<tabState>({
@@ -30,33 +32,42 @@ export const LoginModal: FC<LoginModalProps> = props => {
 
     // * Login Submission
     const onLoginFormSubmit = (evt: FormEvent) => {
+        // * Prevent default behavior (default refreshes page)
         evt.preventDefault()
 
+        // * Make sure user name is provided
         if (username.length == 0) {
             setLoginError('Username not provided!')
             return
         }
 
+        // * trigger onloggin in parent
         props.onLogin(username, password, err => setLoginError(err))
     }
 
     // * Registration
     const onRegisterFormSubmit = (evt: FormEvent) => {
+        // * Prevent default behavior (default refreshes page)
         evt.preventDefault()
 
+        // * Assert username length > 0
         if (username.length == 0) {
             setRegistrationError('Username not provided!')
             return
         }
 
+        // * Assert password length < 5
         if (password.length < 5) {
             setRegistrationError('Password is not of correct length!')
             return
         }
 
+        // * Make sure password is same as confirmation
         if (password == confirmPassword) {
+            // * Trigger register in parent
             props.onRegister(username, password, err => setRegistrationError(err))
         } else {
+            // * Otherwise set registration error
             setRegistrationError('Passwords do not match!')
         }
     }

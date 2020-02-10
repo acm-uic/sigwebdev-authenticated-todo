@@ -1,20 +1,9 @@
-/*
- * File: /src/App.tsx
- * File Created: Wednesday, 11th December 2019 11:29:00 pm
- * Author: Alex Chomiak
- *
- * Last Modified: Sunday, 5th January 2020 4:29:11 pm
- * Modified By: Alex Chomiak
- *
- * Author Github: https://github.com/alexchomiak
- */
-
 import React, { FC, useState, useEffect } from 'react'
 import { Header } from '@components/Header'
-import { User } from '@interfaces/User'
+import { User } from 'models/User'
 import { LoginModal } from '@components/LoginModal'
 import { TodoList } from '@components/TodoList'
-import { ErrorFunction, ErrorMessage } from '@interfaces/Error'
+import { ErrorFunction, ErrorMessage } from 'models/Error'
 import axios from 'axios'
 
 // * Application State Interface
@@ -40,7 +29,7 @@ export const App: FC = () => {
     // * Destructure user, loaded values from state object
     const { user, loaded } = state
 
-    // * useEffect is called everytime user value changes
+    // * useEffect is called everytime user value changes, and on component initialization
     useEffect(() => {
         if (!loaded) {
             // * Fetch user from API
@@ -50,7 +39,6 @@ export const App: FC = () => {
                     // * If user exist, set state with user and return
                     if (response.status < 400) {
                         const user = response.data
-                        console.log(user)
                         setState({ ...state, loaded: true, user })
                         return
                     }
@@ -70,16 +58,20 @@ export const App: FC = () => {
 
     // * Login Function
     const login = async (username: string, password: string, onError: ErrorFunction) => {
-        // TODO: Write login route (very similar to register route
         try {
+            // * Post login request to form
             const response = await axios.post('/api/login', {
                 username,
                 password
             })
 
+            // * Retrieve user from response if logged in
             const user: User = response.data
+
+            // * Set user
             setState({ ...state, user })
         } catch (err) {
+            // * Grab error message from response and display error to user in modal
             const error: ErrorMessage = err.response.data
             onError(error.message)
         }
@@ -87,16 +79,20 @@ export const App: FC = () => {
 
     // * Register Function
     const register = async (username: string, password: string, onError: ErrorFunction) => {
-        console.log(`Attempting to register ${username} : ${password}`)
-
         try {
+            // * Post registration form to API
             const response = await axios.post('/api/register', {
                 username,
                 password
             })
+
+            // * Retrieve user from response if created
             const user: User = response.data
+
+            // * Set user
             setState({ ...state, user })
         } catch (err) {
+            // * Grab error message from response and display error to user in modal
             const error: ErrorMessage = err.response.data
             onError(error.message)
         }
@@ -105,11 +101,11 @@ export const App: FC = () => {
         <div className="app">
             <Header />
             <div className="container">
-                {console.log('Anything inside brackets within jsx is traditional typescript!')}
                 {!loaded && (
                     <div>
                         {
                             // * App Not Loaded
+                            // ? Anything inside brackets within JSX is traditional java/typescript
                         }
                         <h3 style={{ textAlign: 'center' }}> Loading </h3>
                     </div>

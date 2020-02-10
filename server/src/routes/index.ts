@@ -50,8 +50,10 @@ router.post('/login', async (req: Request, res: Response) => {
 
 // * Logout Route
 router.post('/logout', (req: Request, res: Response) => {
-    // TODO: Write Logout Route
+    // * Destroy session on server
     if (req.session) req.session.destroy(err => console.error)
+
+    // * Send Success
     res.send('Success')
 })
 
@@ -91,22 +93,26 @@ router.post('/register', async (req: Request, res: Response) => {
 
 // * Add ToDo route
 router.post('/addtodo', async (req: Request, res: Response) => {
-    // TODO: Write Add Todo Route
+    // * Add Todo
     const { title, description } = req.body
     if (req.session) {
+        // * Add todo to users todo array
         const newTodo: ITodo = { title, description, completed: false, id: uuidv1() }
         await User.updateOne({ _id: req.session.userid }, { $push: { todos: newTodo } })
+
+        // * Send confirmation
         res.send('OK')
     } else res.status(400).send({ message: 'You are not authenticated!' })
 })
 
 // * Delete ToDo route
 router.post('/deletetodo', async (req: Request, res: Response) => {
-    // TODO: Write Delete Todo Route
+    // * Grab ID from req.body
     const { id } = req.body
-    console.log(id)
 
+    // * If a session exists, delete the users todo with the provided id
     if (req.session) {
+        // * Delete the user todo
         await User.updateOne(
             {
                 _id: req.session.userid
@@ -115,36 +121,36 @@ router.post('/deletetodo', async (req: Request, res: Response) => {
                 $pull: { todos: { id: id } }
             }
         )
+
+        // * Send confirmation
         res.send('OK')
     } else res.status(400).send({ message: 'You are not authenticated!' })
 })
 
 // * Update Todo Route
 router.post('/marktodo', async (req: Request, res: Response) => {
-    // TODO: Weite Mark Todo route
+    // * Grab ID and value from body
     const { id, value } = req.body
-    console.log(id)
 
+    // * If session exists, attempt to update TODO value
     if (req.session) {
-        try {
-            // * Update ToDo in array with completed value
-            const res = await User.updateOne(
-                {
-                    _id: req.session.userid,
-                    todos: {
-                        $elemMatch: {
-                            id: id
-                        }
+        // * Update ToDo in array with completed value
+        const res = await User.updateOne(
+            {
+                _id: req.session.userid,
+                todos: {
+                    $elemMatch: {
+                        id: id // * Find Todos rthat match ID
                     }
-                },
-                {
-                    $set: { 'todos.$.completed': value }
                 }
-            )
-            console.log(res)
-        } catch (err) {
-            console.log('ERR' + err)
-        }
+            },
+            {
+                // * Update todos that match id
+                $set: { 'todos.$.completed': value }
+            }
+        )
+
+        // * Send confirmation
         res.send('OK')
     } else res.status(400).send({ message: 'You are not authenticated!' })
 })

@@ -16,4 +16,5 @@ import { App } from './App'
 // * Import styles
 import './styles/index.scss'
 
+// * Render app component into root div of application
 ReactDOM.render(<App />, document.getElementById('root'))

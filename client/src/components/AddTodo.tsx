@@ -7,13 +7,20 @@ interface addTodoProps {
 
 // * Export Header Component
 export const AddTodo: FC<addTodoProps> = props => {
+    // * State Declarations
     const [todo, setTodo] = useState('')
     const [description, setDescription] = useState('')
     const [showModal, setModal] = useState(false)
 
+    // * Add Todo Function
     const add = () => {
+        // * Trigger add todo in parent
         props.addTodo(todo, description)
+
+        // * Close modal
         setModal(false)
+
+        // * Reset TODO & Description
         setTodo('')
         setDescription('')
     }
@@ -28,10 +35,6 @@ export const AddTodo: FC<addTodoProps> = props => {
                 <span className="fa fa-plus-circle fa-lg" aria-hidden="true"></span>
             </button>
             <Modal className="addTodo-modal" isOpen={showModal} ariaHideApp={false}>
-                {
-                    // TODO:
-                    // * Write AddToDo component
-                }
                 <div className="addTodo-content">
                     <div className="header">
                         <h1>Add a Todo Task:</h1>
