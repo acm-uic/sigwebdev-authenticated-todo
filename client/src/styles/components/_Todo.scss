@@ -1,0 +1,23 @@
+.todo {
+    h2 {
+        margin-top: 0.5rem;
+    }
+    .card {
+        border-radius: 0.5rem;
+    }
+
+    i {
+        margin-left: 1rem;
+    }
+    margin: 1rem;
+
+    p {
+        font-size: 1.4rem;
+    }
+
+    .marked {
+        color: darkgreen;
+        font-style: italic;
+        text-decoration: line-through;
+    }
+}

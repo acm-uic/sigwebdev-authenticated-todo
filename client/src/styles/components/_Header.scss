@@ -1,0 +1,19 @@
+.header {
+    background: $sectionColor;
+    text-align: center;
+    width: 100%;
+    padding: 1rem 2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    h1 {
+        display: inline;
+        margin: 0rem 2rem;
+        color: white;
+        font-size: 4rem;
+    }
+
+    p {
+        color: white;
+        font-size: 1rem;
+    }
+}

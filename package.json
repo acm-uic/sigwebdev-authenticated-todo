@@ -1,0 +1,23 @@
+{
+  "name": "sigwebdev-authenticated-todo",
+  "version": "1.0.0",
+  "description": "Authenticated ToDo Web application written in Typescript, React, and NodeJS/Express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"start-all": "concurrently -n server,client 'cd ./server && npm run start:dev' 'cd ./client && npm run start:silent'" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acm-uic/sigwebdev-authenticated-todo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/acm-uic/sigwebdev-authenticated-todo/issues"
+  },
+  "homepage": "https://github.com/acm-uic/sigwebdev-authenticated-todo#readme",
+  "dependencies": {
+    "concurrently": "^5.1.0"
+  }
+}
