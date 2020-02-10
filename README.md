@@ -1,4 +1,4 @@
-# sigwebdev-authenticated-todo
+# Sig-WebDev Authenticated Todo App
 Authenticated ToDo Web application written in Typescript, React, and NodeJS/Express
 
 # How To get started
