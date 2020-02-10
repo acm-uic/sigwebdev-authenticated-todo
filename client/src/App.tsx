@@ -72,14 +72,19 @@ export const App: FC = () => {
     const login = async (username: string, password: string, onError: ErrorFunction) => {
         // TODO: Write login route (very similar to register route
         try {
+            // * Post login request to form
             const response = await axios.post('/api/login', {
                 username,
                 password
             })
 
+            // * Retrieve user from response if logged in
             const user: User = response.data
+
+            // * Set user
             setState({ ...state, user })
         } catch (err) {
+            // * Grab error message from response and display error to user in modal
             const error: ErrorMessage = err.response.data
             onError(error.message)
         }
@@ -90,13 +95,19 @@ export const App: FC = () => {
         console.log(`Attempting to register ${username} : ${password}`)
 
         try {
+            // * Post registration form to API
             const response = await axios.post('/api/register', {
                 username,
                 password
             })
+
+            // * Retrieve user from response if created
             const user: User = response.data
+
+            // * Set user
             setState({ ...state, user })
         } catch (err) {
+            // * Grab error message from response and display error to user in modal
             const error: ErrorMessage = err.response.data
             onError(error.message)
         }
