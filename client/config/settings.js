@@ -21,7 +21,7 @@ module.exports = {
     includeReduxInBundle: false,
     // * Dev server settings
     port: 3001,
-    apiProxyUrl: 'https://localhost:3002',
+    apiProxyUrl: 'http://localhost:3002',
     // * Alias Resolution paths, add paths here to avoid relative path hell for imports!
     aliases: {
         // ! Run npm run refresh to update the tsconfig when changing these!!

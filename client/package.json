@@ -7,6 +7,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "webpack-dashboard -m -t 'GoTo React App' -- webpack-dev-server src --inline --config ./config/webpack.development.config.js --open",
+        "start:silent": "webpack-dev-server src --inline --config ./config/webpack.development.config.js --open",
         "refresh": "node ./scripts/refresh.js",
         "build": "webpack --config ./config/webpack.production.config.js",
         "buildlib": "webpack --config ./config/webpack.library.config.js"
