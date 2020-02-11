@@ -6,12 +6,26 @@
     white-space: nowrap;
     overflow: hidden;
     h1 {
-        display: inline;
-        margin: 0rem 2rem;
+        display: block;
         color: white;
         font-size: 4rem;
+        font-weight: 400;
+    }
+    h2 {
+        display: inline-block;
+        color: white;
+        font-weight: 200;
     }
 
+    span {
+        display: inline;
+        width: 10rem;
+        margin: 0rem 2rem;
+    }
+
+    img {
+        display: inline-block;
+    }
     p {
         color: white;
         font-size: 1rem;
