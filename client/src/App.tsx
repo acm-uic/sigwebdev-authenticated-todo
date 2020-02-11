@@ -99,7 +99,7 @@ export const App: FC = () => {
     }
     return (
         <div className="app">
-            <Header />
+            <Header user={user} />
             <div className="container">
                 {!loaded && (
                     <div>
