@@ -22,7 +22,6 @@ export const TodoList: FC<TodoListProps> = props => {
 
         // * Update User Object to refresh application
         const user = (await axios.get('/api/user')).data
-        console.log(user)
         setUser(user)
     }
 
