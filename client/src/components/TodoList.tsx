@@ -50,7 +50,6 @@ export const TodoList: FC<TodoListProps> = props => {
 
     return (
         <div className="todoList container ">
-            <AddTodo addTodo={addTodo} />
             <div className="row justify-content-md-center">
                 {user !== null &&
                     // * Map over all of the users todos and list them out
@@ -65,6 +64,7 @@ export const TodoList: FC<TodoListProps> = props => {
                         )
                     })}
             </div>
+            <AddTodo addTodo={addTodo} />
         </div>
     )
 }
