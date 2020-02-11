@@ -24,3 +24,5 @@ npm install
 npm run start-all
 ```
 in base directory of repo and the application will startup 
+
+![App Screenshot](https://i.imgur.com/qaGK5jw.png)
