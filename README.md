@@ -2,21 +2,21 @@
 Authenticated ToDo Web application written in Typescript, React, and NodeJS/Express
 
 # How To get started
-1. clone repo
+1. clone repo :white_check_mark:
 
-2. run (in base directory of repo): 
+2. run (in base directory of repo): :white_check_mark:
 ```
 npm install 
 ```
 
 
-3. run (in /client directory of repo) :
+3. run (in /client directory of repo): :white_check_mark:
 ```
 npm install
 ```
 
 
-4. run (in /server directory of repo): 
+4. run (in /server directory of repo): :white_check_mark: 
 ```
 npm install
 ```
@@ -26,4 +26,4 @@ npm install
 ```
 npm run start-all
 ```
-in base directory of repo and the application will startup
+in base directory of repo and the application will startup :white_check_mark:
