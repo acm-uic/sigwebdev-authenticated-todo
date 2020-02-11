@@ -25,6 +25,13 @@ export const AddTodo: FC<addTodoProps> = props => {
         setDescription('')
     }
 
+    // * Cancel Add Todo Function
+    const cancel = () => {
+        setModal(false)
+        setTodo('')
+        setDescription('')
+    }
+
     return (
         <div className="addTodo">
             <button
@@ -38,6 +45,9 @@ export const AddTodo: FC<addTodoProps> = props => {
                 <div className="addTodo-content">
                     <div className="header">
                         <h1>Add a Todo Task:</h1>
+                        <button onClick={cancel} className="btn btn-outline-danger ">
+                            Cancel
+                        </button>
                     </div>
                     <div className="panel">
                         <div className="col-md-12">

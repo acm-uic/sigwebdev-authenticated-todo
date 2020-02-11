@@ -24,14 +24,23 @@
     color: white;
 
     .header {
-        padding: 1rem;
+        position: relative;
+        padding: 0rem;
         width: 100%;
         text-align: left;
         h1 {
             font-size: 2rem;
             display: inline;
+            margin: 1rem;
             margin-left: 2rem;
         }
+
+        button {
+            position: absolute;
+            top: -0.8rem;
+            right: 1rem;
+        }
+        padding-bottom: 1rem;
     }
 
     .panel {
