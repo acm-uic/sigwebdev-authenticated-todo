@@ -4,23 +4,23 @@ Authenticated ToDo Web application written in Typescript, React, and NodeJS/Expr
 # How To get started
 1. clone repo
 
-2. run: 
+2. run (in base directory of repo): 
 ```
 npm install 
 ```
-in base directory of repo
 
-3. run:
+
+3. run (in /client directory of repo) :
 ```
 npm install
 ```
-in /client directory of repo
 
-4. run: 
+
+4. run (in /server directory of repo): 
 ```
 npm install
 ```
-in /server directory of repo
+
 
 5. run:
 ```
