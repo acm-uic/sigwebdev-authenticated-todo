@@ -121,10 +121,10 @@ router.post('/deletetodo', async (req: Request, res: Response) => {
                 $pull: { todos: { id: id } }
             }
         )
-
-        // * Send confirmation
-        res.send('OK')
     } else res.status(400).send({ message: 'You are not authenticated!' })
+
+    // * Send confirmation
+    res.send('OK')
 })
 
 // * Update Todo Route
@@ -135,7 +135,7 @@ router.post('/marktodo', async (req: Request, res: Response) => {
     // * If session exists, attempt to update TODO value
     if (req.session) {
         // * Update ToDo in array with completed value
-        const res = await User.updateOne(
+        await User.updateOne(
             {
                 _id: req.session.userid,
                 todos: {
@@ -149,10 +149,10 @@ router.post('/marktodo', async (req: Request, res: Response) => {
                 $set: { 'todos.$.completed': value }
             }
         )
-
-        // * Send confirmation
-        res.send('OK')
     } else res.status(400).send({ message: 'You are not authenticated!' })
+
+    // * Send confirmation
+    res.send('OK')
 })
 
 // * export router
