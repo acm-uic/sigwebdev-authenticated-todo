@@ -23,7 +23,6 @@ app.use(
     })
 )
 
-console.log(process.env.NODE_ENV)
 // * Connect mongoose ( JS/TS interface layer with mongodb )
 mongoose
     .connect(MongoURL, {
