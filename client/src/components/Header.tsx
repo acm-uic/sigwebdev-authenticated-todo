@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import ACMLogo from '@assets/acmlogo.png'
+import ACMLogo from '../assets/acmlogo.png'
 import { User } from 'models/User'
 
 interface HeaderProps {
