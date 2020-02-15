@@ -35,7 +35,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version}}
         uses: actions/setup-node@v1.1.0
-      - name: Build and Test Client
+      - name: Build and Test Server
         run: |
           pushd server
           npm install
