@@ -4,7 +4,7 @@
  * Author: Alex Chomiak
  *
  * Last Modified: Thursday, 12th December 2019 3:36:32 am
- * Modified By: Alex Chomiak 
+ * Modified By: Alex Chomiak
  *
  * Author Github: https://github.com/alexchomiak
  */
@@ -21,8 +21,17 @@ module.exports = {
             use: ['style-loader', 'css-loader']
         },
         {
-            test: /\.scss$/,
-            use: ['style-loader', 'css-loader', { loader: 'sass-loader', options: { loadPaths: ['src/styles/*'] } }]
+            test: /\.s[ac]ss$/i,
+            use: [
+                'style-loader',
+                'css-loader',
+                {
+                    loader: 'sass-loader',
+                    options: {
+                        sassOptions: { includePaths: ['src/styles/*'] }
+                    }
+                }
+            ]
         },
         {
             test: /\.(gif|png|jpe?g|svg)$/i,
