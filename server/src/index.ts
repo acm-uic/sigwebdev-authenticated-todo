@@ -1,5 +1,5 @@
 import './loadEnvironment'
-import app from '@server' // * Import app
+import app from './Server' // * Import app
 
 // * Start the application
 const port = Number(process.env.port || 3002)

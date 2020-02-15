@@ -1,6 +1,6 @@
 import React, { FC, useState, FormEvent } from 'react'
 import Modal from 'react-modal'
-import ACMLogo from '@assets/acmlogo.png'
+import ACMLogo from '../assets/acmlogo.png'
 import { ErrorFunction } from 'models/Error'
 
 // * Login Modal, allows user to login/register with application
