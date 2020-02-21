@@ -5,23 +5,20 @@ NOTE: My code is MUCH more legible with the Better Comments VSCode extension ins
 
 # How To get started
 1. clone repo 
-
+```
+git clone https://github.com/acm-uic/sigwebdev-authenticated-todo
+```
 2. run (in base directory of repo): 
 ```
 npm install 
 ```
 
-3. run (in /client directory of repo): 
+3. run (in base directory of repo):
 ```
-npm install
-```
-
-4. run (in /server directory of repo): 
-```
-npm install
+npm run install-all
 ```
 
-5. run:
+4. run:
 ```
 npm run start-all
 ```
